@@ -4,7 +4,7 @@ button.addEventListener("click", (event) => {
 });
 
 function handle_data() {
-  fetch("data/metasys_example_data.json")
+  fetch("./data/metasys_example_data.json")
     .then(function (response) {
       return response.json();
     })
@@ -16,7 +16,7 @@ function handle_data() {
       console.log("error: " + err);
     });
   function appendData(data) {
-    var mainContainer = document.getElementById("myData");
+    var mainContainer = document.getElementById("my-data");
     for (var i = 0; i < data.length; i++) {
       var div = document.createElement("div");
       console.log(data[i]);
