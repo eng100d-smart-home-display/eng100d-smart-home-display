@@ -1,0 +1,19 @@
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.box {
+    border: 2px solid black;
+    background-color: #ECECEC;
+    width: 50%;
+    margin: 1rem;
+    min-height: 200px;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
