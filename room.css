@@ -58,3 +58,36 @@ main {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
+
+  #header-search {
+    display: inline-block; 
+    width: 400px; 
+    height: 32px;
+    background: gray; 
+    color: white; 
+    border: none; 
+    outline: none;
+    font-size: 12pt; 
+    padding: 4px 28px 4px 4px; 
+    vertical-align: middle;
+    margin-left: -4px;
+  }
+#search-icon {
+    position: relative;
+    background: gray;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    fill: white; 
+    width: 24px; 
+    height: 24px;
+    vertical-align: middle; 
+    cursor: pointer;
+  }
+.header {
+    display: flex;
+    margin-left: 320px;
+}
+
+.header-child {
+    flex: 1;
+}  
