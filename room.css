@@ -9,6 +9,7 @@ main {
 
 #room-id {
   margin: 1rem;
+  color: #4F4CD4;
 }
 .flex-container {
   display: flex;
@@ -18,7 +19,7 @@ main {
 }
 
 .box {
-  background-color: #ECECEC;
+  background-color: #F1F1FF;
   width: 50%;
   margin: 1rem;
   min-height: 200px;
@@ -41,7 +42,7 @@ main {
   top: 0;
   /* Stay at the top */
   left: 0;
-  background-color: #ECECEC;
+  background-color: #1E2022;
   /* Black */
   overflow-x: hidden;
   /* Disable horizontal scroll */
@@ -53,7 +54,7 @@ main {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: rgba(255, 255, 255, 0.87);
   display: block;
 }
 
@@ -66,7 +67,7 @@ main {
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-  color: #4284F3;
+  color: #9B92F8;
 }
 
 /* Style page content */
@@ -86,7 +87,8 @@ main {
 
 .searchIcon {
   padding: 1rem 0 1rem 1.5rem;
-  background: #ECECEC;
+  background: #F1F1FF;
+  color: #4F4CD4;
   border-radius: 50px;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
@@ -97,7 +99,7 @@ main {
   border: 0;
   padding: 0.5rem 0.5rem 0.5rem 0;
   flex: 1;
-  background: #ECECEC;
+  background: #F1F1FF;
 }
 
 .searchButton {
@@ -122,5 +124,5 @@ main {
 #time {
   font-size: 26px;
   padding: 0 2rem;
-  color: #888;
+  color: #1E2022;
 }
