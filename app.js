@@ -12,32 +12,31 @@ function handle_data() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data.items);
       appendData(data.items);
     })
     .catch(function (err) {
-      console.log("error: " + err);
     });
   function appendData(data) {
-    j = 0
     var mainContainer = document.getElementById("my-data");
-    dataList.push(['time', 'watts'])
-    for (var i = 0; i < data.length; i++) {
-      var div = document.createElement("div");
-      console.log(data[i]);
-      div.innerHTML = `Milliwatts: ${data[i].value.value}, Date: ${data[i].timestamp}, Reliable: ${data[i].isReliable}`;
-      mainContainer.appendChild(div);
-      var dateTime = new Date(data[i].timestamp).getTime();
+    dataList.push(['Time', 'KwH'])
+    var count = 0;
 
+    for (var i = 0; i < data.length; i++) {
+      var dat = data[i].value.value / (1000000);
+      count += dat;
       if (i % 12 == 0) {
-        dataList.push([j, (data[j].value.value)/1000])
-        j++
+        dataList.push([i / 12, count])
       }
     }
 
-    console.log(dataList)
+    // Make line of best fit, find slope of line of best fit, print out slope (this is the average kwh used in THAT day)
+    //set hourly ticks
+  
+
+
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
+    }
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable(dataList);
@@ -45,13 +44,35 @@ function handle_data() {
     var options = {
       title: 'electricity over time',
       curveType: 'function',
-      legend: { position: 'bottom' }
+      legend: { position: 'bottom' },
+      trendlines: { 0: {} },
+      'width':1500,
+  'height':800,
+  series: {
+    0: {
+      visibleInLegend: false
+    }
+  },
+  trendlines: {
+    0: {
+      visibleInLegend: true
+    }
+  },
+      hAxis: {
+        minValue: 0,
+        maxValue: 24,
+        ticks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+    }
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
+    google.visualization.events.addListener(chart, 'ready', function () {
+      var equation = $('text[text-anchor="start"][fill="#222222"]').text();
+      console.log(equation);
+    });
+  
     chart.draw(data, options);
   }
     
   }
-}
+
