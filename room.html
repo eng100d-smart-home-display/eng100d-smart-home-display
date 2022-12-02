@@ -12,6 +12,8 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="curve_chart" style="width: 2; height: 2"></div>
+
     <div class="sidenav">
       <a href="#" style="color: #9290E6;">EN</a> <a href="">|</a> <a href="#">ES</a>
       <a href="#">Home</a>
@@ -23,6 +25,7 @@
       <a href="#">Solar Power</a>
       <a href="#">Electric Vehicle</a>
       <a href="#">Power Wall</a>
+      <div id="curve_chart" style="width: 2; height: 2"></div>
     </div>
 
     <div class="header">
@@ -40,21 +43,21 @@
       <div class="flex-container">
         <div class="box flex-1">
           <p class="square-header">Total Energy Usage</p>
-          <p>23.108 kWh</p>
+          <p id="total">00</p>
         </div>
         <div class="box flex-2">
           <p class="square-header">Average Energy Usage</p>
-          <p>1.014 kW</p>
+          <p id="slope">00000</p>
         </div>
       </div>
       <div class="flex-container">
         <div class="box flex-1">
-          <p class="square-header">Outlet Energy Usage</p>
-          <p># kWh</p>
+          <p class="square-header">Peak Energy Usage</p>
+          <p id="peak"># kWh</p>
         </div>
         <div class="box flex-2">
-          <p class="square-header">Appliance Energy Usage</p>
-          <p># kWh</p>
+          <p class="square-header">Offpeak Energy Usage</p>
+          <p id="offpeak"># kWh</p>
         </div>
       </div>
     </main>
@@ -65,3 +68,9 @@
     ></script>
   </body>
 </html>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<div id="chart_div"></div>

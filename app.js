@@ -1,33 +1,28 @@
-window.onload = (event) => {
-    var dt = new Date();
-    var hours = dt.getHours();
-    if(hours > 12){
-        hours = hours - 12;
-    }
-    document.getElementById('time').innerHTML=String(hours) + ':' + String(dt.getMinutes());
 
-    handle_data();
-  };
-
-  function handle_data() {
-    fetch("./data/metasys_example_data.json")
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        appendData(data.items);
-      })
-      .catch(function (err) {
-      });
+button = document.getElementById("get-data");
+button.addEventListener("click", (event) => {
+  handle_data();
+});
 
 var dataList = []
-function appendData(data) {
+
+function handle_data() {
+  fetch("./data/metasys_example_data.json")
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      appendData(data.items);
+    })
+    .catch(function (err) {
+    });
+    
+  function appendData(data) {
     var mainContainer = document.getElementById("my-data");
     dataList.push(['Time', 'KwH'])
     var count = 0;
 
     var max = -999;
-    var lowest = 999;
 
     for (var i = 0; i < data.length; i++) {
       var dat = data[i].value.value / (1000000);
@@ -35,24 +30,12 @@ function appendData(data) {
       if (data[i].value.value > max) {
         max = data[i].value.value;
       }
-      if (data[i].value.value < lowest) {
-        lowest = data[i].value.value;
-      }
       if (i % 12 == 0) {
         dataList.push([i / 12, count])
       }
     }
     console.log(max);
-    var num = (dataList[dataList.length-2][1]);
-
-    max = max / 1000000; 
-    lowest = lowest/1000000;
-
-    document.getElementById("total").innerHTML = num.toFixed(3) + ' kWh';
-    document.getElementById("peak").innerHTML = max.toFixed(3) + ' kWh';
-    document.getElementById("offpeak").innerHTML = lowest.toFixed(3) + ' kWh';
-
-
+    console.log(dataList[dataList.length-2][1]);
 
 
     // Make line of best fit, find slope of line of best fit, print out slope (this is the average kwh used in THAT day)
@@ -101,7 +84,6 @@ function appendData(data) {
       const myArray = equation.split(" ");
       slope = myArray[2];
       console.log(slope);
-      document.getElementById("slope").innerHTML = slope + ' kWh';
 
 
       chart.clearChart();
@@ -113,5 +95,5 @@ function appendData(data) {
 
   }
     
-  
   }
+
