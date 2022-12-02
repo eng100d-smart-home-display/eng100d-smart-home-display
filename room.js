@@ -42,6 +42,8 @@ function appendData(data) {
         dataList.push([i / 12, count])
       }
     }
+    var calcAvg = count /= data.length;
+    console.log(count /= data.length); 
     console.log(max);
     var num = (dataList[dataList.length-2][1]);
 
@@ -51,6 +53,7 @@ function appendData(data) {
     document.getElementById("total").innerHTML = num.toFixed(3) + ' kWh';
     document.getElementById("peak").innerHTML = max.toFixed(3) + ' kWh';
     document.getElementById("offpeak").innerHTML = lowest.toFixed(3) + ' kWh';
+    document.getElementById("slope").innerHTML = calcAvg.toFixed(3) + ' kWh';
 
 
 
@@ -101,7 +104,7 @@ function appendData(data) {
       const myArray = equation.split(" ");
       slope = myArray[2];
       console.log(slope);
-      document.getElementById("slope").innerHTML = slope + ' kWh';
+      //document.getElementById("slope").innerHTML = slope + ' kWh';
 
 
       chart.clearChart();
