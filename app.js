@@ -21,13 +21,21 @@ function handle_data() {
     dataList.push(['Time', 'KwH'])
     var count = 0;
 
+    var max = -999;
+
     for (var i = 0; i < data.length; i++) {
       var dat = data[i].value.value / (1000000);
       count += dat;
+      if (data[i].value.value > max) {
+        max = data[i].value.value;
+      }
       if (i % 12 == 0) {
         dataList.push([i / 12, count])
       }
     }
+    console.log(max);
+    console.log(dataList[dataList.length-2][1]);
+
 
     // Make line of best fit, find slope of line of best fit, print out slope (this is the average kwh used in THAT day)
     //set hourly ticks
@@ -46,7 +54,7 @@ function handle_data() {
       curveType: 'function',
       legend: { position: 'bottom' },
       trendlines: { 0: {} },
-      'width':1500,
+      'width':1200,
   'height':800,
   series: {
     0: {
@@ -65,13 +73,25 @@ function handle_data() {
     }
     };
 
+    var slope;
+
     var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    var doc = document.getElementById('curve_chart');
     google.visualization.events.addListener(chart, 'ready', function () {
       var equation = $('text[text-anchor="start"][fill="#222222"]').text();
       console.log(equation);
+      const myArray = equation.split(" ");
+      slope = myArray[2];
+      console.log(slope);
+
+
+      chart.clearChart();
+
+
     });
   
     chart.draw(data, options);
+
   }
     
   }
