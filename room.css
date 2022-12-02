@@ -1,6 +1,6 @@
 
 * {
-font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 main {
@@ -125,4 +125,8 @@ main {
   font-size: 26px;
   padding: 0 2rem;
   color: #1E2022;
+}
+
+.square-header {
+  font-weight: bold;
 }
